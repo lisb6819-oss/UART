@@ -20,7 +20,25 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
 
+/* USER CODE BEGIN Includes */
+#include <stdio.h>
+/* USER CODE END Includes */
+
 /* USER CODE BEGIN 0 */
+
+/* printf -> syscalls.c: _write -> USART1 */
+int __io_putchar(int ch)
+{
+  uint8_t data = (uint8_t)ch;
+
+  if (HAL_UART_Transmit(&huart1, &data, 1, 1000) != HAL_OK)
+  {
+    return EOF;
+  }
+
+  return (int)data;
+}
+
 
 uint8_t USART1_RX_BUF[USART1_REC_LEN];     //接收缓冲
 uint16_t USART1_RX_STA = 0; 
@@ -59,6 +77,8 @@ void MX_USART1_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART1_Init 2 */
+  /* Send printf output immediately instead of buffering it. */
+  setvbuf(stdout, NULL, _IONBF, 0);
   HAL_UART_Receive_IT(&huart1, rx_buffer, RXBUFFERSIZE); //开启接收中断
   /* USER CODE END USART1_Init 2 */
 

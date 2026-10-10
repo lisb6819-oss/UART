@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <string.h>
+#include <stdio.h>
 #include "led.h"
 /* USER CODE END Includes */
 
@@ -57,6 +58,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 
 /* USER CODE END 0 */
 
@@ -94,6 +96,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -112,11 +115,11 @@ int main(void)
         times++;
         if(times%50==0)
         {
-            times=0;
             LED1_TOGGLE();
         }
         if(times%500==0)
         {
+             times=0;
             printf("请输入数据：\r\n");
         }
         HAL_Delay(10);
