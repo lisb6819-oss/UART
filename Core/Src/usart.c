@@ -20,12 +20,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
 
-/* USER CODE BEGIN Includes */
-#include <stdio.h>
-/* USER CODE END Includes */
-
 /* USER CODE BEGIN 0 */
-
+#include <stdio.h>
 /* printf -> syscalls.c: _write -> USART1 */
 int __io_putchar(int ch)
 {
