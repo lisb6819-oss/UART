@@ -61,10 +61,6 @@ void Error_Handler(void);
 #define LED1_GPIO_Port GPIOC
 #define DS18_Pin GPIO_PIN_0
 #define DS18_GPIO_Port GPIOB
-#define USART1_TX_Pin GPIO_PIN_9
-#define USART1_TX_GPIO_Port GPIOA
-#define USART1_RX_Pin GPIO_PIN_10
-#define USART1_RX_GPIO_Port GPIOA
 #define LED0_Pin GPIO_PIN_5
 #define LED0_GPIO_Port GPIOB
 
