@@ -23,9 +23,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <string.h>
 #include <stdio.h>
-#include "led.h"
+#include "ds18b20.h"
+#include "usDelay.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -69,9 +69,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-  uint8_t len;
-  uint16_t times=0;
-  float temp=0;
 
   /* USER CODE END 1 */
 
@@ -103,9 +100,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    temp = ds18b20_get_temp();
+    float temp = ds18b20_get_temp();
     printf("temp:%.2f\r\n", temp);
-    HAL_Delay(250);
+    HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

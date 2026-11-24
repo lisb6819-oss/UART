@@ -99,7 +99,7 @@ float ds18b20_get_temp(void)
     ds18b20_write_byte(0xCC); // Skip ROM
     ds18b20_write_byte(0x44); // Convert T
 
-    HAL_Delay(750); // Conversion must finish before reading; 750 ms is the 12-bit maximum.
+    // HAL_Delay(750); // Conversion must finish before reading; 750 ms is the 12-bit maximum.
 
     ds18b20_reset();
     ds18b20_check();

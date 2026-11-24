@@ -36,6 +36,11 @@ add_executable(${CMAKE_PROJECT_NAME}
     Core/Src/ds18b20.c
     Core/Src/usDelay.c)
 
+# Enable floating-point printf with GCC's newlib-nano.
+if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+    target_link_options(${CMAKE_PROJECT_NAME} PRIVATE "LINKER:-u,_printf_float")
+endif()
+
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
