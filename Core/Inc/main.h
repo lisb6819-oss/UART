@@ -59,8 +59,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED1_Pin GPIO_PIN_13
 #define LED1_GPIO_Port GPIOC
-#define DS18_Pin GPIO_PIN_0
-#define DS18_GPIO_Port GPIOB
+#define DHT11_Pin GPIO_PIN_0
+#define DHT11_GPIO_Port GPIOB
 #define LED0_Pin GPIO_PIN_5
 #define LED0_GPIO_Port GPIOB
 

@@ -24,7 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
-#include "ds18b20.h"
+#include "dht11.h"
 #include "usDelay.h"
 /* USER CODE END Includes */
 
@@ -46,7 +46,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint8_t temperature, humidity;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -100,8 +100,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    float temp = ds18b20_get_temp();
-    printf("temp:%.2f\r\n", temp);
+    if(dht11_read_data(&temperature, &humidity) == 0)
+    {
+        printf("Temperature: %d°C, Humidity: %d%%\r\n", temperature, humidity);
+    }
+    else
+    {
+        printf("Failed to read data from DHT11 sensor\r\n");
+    }
     HAL_Delay(1000);
     /* USER CODE END WHILE */
 

@@ -33,8 +33,9 @@ enable_language(C ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME}
-    Core/Src/ds18b20.c
-    Core/Src/usDelay.c)
+    Core/Src/usDelay.c
+    Core/Inc/dht11.h
+    Core/Src/dht11.c)
 
 # Enable floating-point printf with GCC's newlib-nano.
 if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
