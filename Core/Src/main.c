@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stm32f1xx_hal_gpio.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -71,6 +72,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
   uint8_t len;
   uint16_t times=0;
+  float temp=0;
 
   /* USER CODE END 1 */
 
@@ -94,7 +96,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  DWT_Init();
 
   /* USER CODE END 2 */
 
@@ -102,27 +104,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    if(USART1_RX_STA&0x8000) //接收完成
-    {
-        len=USART1_RX_STA&0X3FFF; //得到此次接收到的数据长度
-        HAL_UART_Transmit(&huart1,USART1_RX_BUF,len,1000); //发送数据
-
-        USART1_RX_STA=0; //清零，准备下次接收
-    }
-    else
-    {
-        times++;
-        if(times%50==0)
-        {
-            LED1_TOGGLE();
-        }
-        if(times%500==0)
-        {
-             times=0;
-            printf("请输入数据：\r\n");
-        }
-        HAL_Delay(10);
-    }
+    temp = ds18b20_get_temp();
+    printf("temp:%.2f\r\n", temp);
+    HAL_Delay(250);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
